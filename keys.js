@@ -5,10 +5,10 @@ exports.spotify = {
   secret: process.env.SPOTIFY_SECRET
 };
 
-exports.omdb = {
+exports.omdb = {    // Gave 401 error
     id: process.env.OMDB_KEY
 };
 
-exports.bandsInTown = {
+exports.bandsInTown = {     // Gave 401 error
     id: process.env.BANDS_IN_TOWN_KEY
 };
