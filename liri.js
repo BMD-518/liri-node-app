@@ -44,21 +44,19 @@ function searchBandsInTown(searchInput){
         for (i = 0; i < 24; i++){
             console.log(`
             RESULT #${[i]}
-            ++++++++++++++++++++++++++++++++++++++++++++++++++\n
+            ++++++++++++++++++++++++++++++++++++++++++++++++++
             Venue Name: ${response.data[i].venue.name}
             Venue Location: ${response.data[i].venue.city} ${response.data[i].venue.region}
-            Event Date: ${response.data[i].datetime}\n
+            Event Date: ${response.data[i].datetime}
             ++++++++++++++++++++++++++++++++++++++++++++++++++
-            
             `)
         }
 
     })
+    .catch(function(error){
+        console.log(error)
+    })
 }
-
-
-
-
 
 // searchSpotify();
 
