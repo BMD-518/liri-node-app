@@ -13,7 +13,6 @@ var searchInput = process.argv[3]
 
 // var omdb = keys.omdb; // Tried to pass api key through keys,js. returning 401 error
 // var bandsInTown = keys.bandsInTown;
- searchOMDB()
 
 function searchOMDB(searchInput){
     if (!searchInput){
@@ -34,15 +33,32 @@ function searchOMDB(searchInput){
     })
 }
 
+searchBandsInTown()
+
+function searchBandsInTown(searchInput){
+    if (!searchInput){
+        searchInput = 'Celine Dion'
+    }
+    axios.get("https://rest.bandsintown.com/artists/" + searchInput + "/events?app_id=codingbootcamp")
+    .then(function(response){
+        for (i = 0; i < 24; i++){
+            console.log(`
+            RESULT #${[i]}
+            ++++++++++++++++++++++++++++++++++++++++++++++++++\n
+            Venue Name: ${response.data[i].venue.name}
+            Venue Location: ${response.data[i].venue.city} ${response.data[i].venue.region}
+            Event Date: ${response.data[i].datetime}\n
+            ++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+            `)
+        }
+
+    })
+}
 
 
-//   axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy").then(
-//     function(response) {
-//       // Then we print out the imdbRating
-//       // console.log(response)
-//       console.log("The movie's rating is: " + response.data.imdbRating);
-//     }
-//   );
+
+
 
 // searchSpotify();
 
@@ -59,16 +75,3 @@ function searchOMDB(searchInput){
 //     console.log(err);
 //     });
 // }
-
-
-
-
-
-
-
-
-//   axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
-//       function(response) {
-//           console.log(response);
-//       }
-//   )
