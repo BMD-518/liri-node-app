@@ -7,18 +7,35 @@ var moment = require("moment");
 moment().format();
 
 var Spotify = require('node-spotify-api/index'); // VSCODE ERROR: Could not find a declaration file for module 'node-spotify-api/index'.
-var spotify = new Spotify(keys.spotify);
 
-var searchInput = process.argv[3]
+let masterKey = new keys();
+var spotify = new Spotify(masterKey.spotify);
+var omdb = masterKey.omdb.id; 
+var bandsInTown = masterKey.bandsInTown.id;
 
-// var omdb = keys.omdb; // Tried to pass api key through keys,js. returning 401 error
-// var bandsInTown = keys.bandsInTown;
 
-function searchOMDB(searchInput){
+var command = process.argv[2];
+var searchInput = process.argv[3];
+
+switch (command) {
+    case 'concert-this':
+        searchBandsInTown();
+        break;
+    case 'spotify-this-song':
+        searchSpotify();
+        break;
+    case 'movie-this':
+        searchOMDB();
+        break;
+
+};
+// searchOMDB();
+
+function searchOMDB(){
     if (!searchInput){
-        searchInput = 'Mr.Nobody'
-    }
-    axios.get("http://www.omdbapi.com/?t="+searchInput+"&y=&plot=short&apikey=trilogy")
+        searchInput = 'Mr.Nobody';
+    };
+    axios.get(`http://www.omdbapi.com/?t=" + ${searchInput} + "&y=&plot=short&apikey=${omdb}`)
     .then(function (response){
         console.log(`
             Title: "${response.data.Title}"
@@ -29,47 +46,48 @@ function searchOMDB(searchInput){
             Language: ${response.data.Language}
             Plot: ${response.data.Plot}
             Cast: ${response.data.Actors}
-        `)
-    })
-}
+        `);
+    });
+};
 
-searchBandsInTown()
+// searchBandsInTown();
 
-function searchBandsInTown(searchInput){
+function searchBandsInTown(){
     if (!searchInput){
         searchInput = 'Celine Dion'
-    }
-    axios.get("https://rest.bandsintown.com/artists/" + searchInput + "/events?app_id=codingbootcamp")
+    };
+    axios.get(`https://rest.bandsintown.com/artists/${searchInput}/events?app_id=${bandsInTown}`)
     .then(function(response){
         for (i = 0; i < 24; i++){
             console.log(`
-            RESULT #${[i]}
+            RESULT #${i+1}
             ++++++++++++++++++++++++++++++++++++++++++++++++++
             Venue Name: ${response.data[i].venue.name}
             Venue Location: ${response.data[i].venue.city} ${response.data[i].venue.region}
             Event Date: ${response.data[i].datetime}
             ++++++++++++++++++++++++++++++++++++++++++++++++++
-            `)
-        }
+            `);
+        };
 
-    })
-    .catch(function(error){
+    }).catch(function(error){
         console.log(error)
-    })
-}
+    });
+};
 
-// searchSpotify();
 
-// function searchSpotify(searchInput){
-//     if (!searchInput){
-//         searchInput = 'The Sign'
-//     }
-//     spotify
-//   .search({ type: 'track', query: searchInput, limit: 5})
-//   .then(function(response) {
-//     console.log(response.tracks);
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//     });
-// }
+
+
+// searchSpotify()
+
+function searchSpotify(){
+    if (!searchInput){
+        searchInput = 'The Sign';
+    };
+    spotify
+  .search({ type: 'track', query: searchInput, limit: 1})
+  .then(function(response) {
+    console.log(JSON.stringify(response, null, 2));
+  }).catch(function(err) {
+    console.log(err);
+    });
+};
