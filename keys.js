@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-console.log('this is loaded');
+console.log('This is loaded');
 
 class Keys { // create class of keys that holds api key values for each api
     constructor(){

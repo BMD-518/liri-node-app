@@ -86,7 +86,13 @@ function searchSpotify(){
     spotify
   .search({ type: 'track', query: searchInput, limit: 1})
   .then(function(response) {
-    console.log(JSON.stringify(response, null, 2));
+    var spotifyResult = `
+        Artist(s): ${response.tracks.items[0].artists[0].name}
+        Song Title: ${response.tracks.items[0].name}
+        Link to Track: ${response.tracks.items[0].external_urls.spotify}
+        Album: ${response.tracks.items[0].album.name}
+    `;
+    console.log(spotifyResult)
   }).catch(function(err) {
     console.log(err);
     });
