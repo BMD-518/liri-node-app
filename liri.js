@@ -70,13 +70,14 @@ function searchBandsInTown(){
     .then(function(response){
         for (i = 0; i < 5; i++){
             // console.log(response) // responses for concert search not working with searchInput variable. 
+            var dateVar = moment(response.data[i].datetime);
             console.log(`
             RESULT #${i+1}
             ++++++++++++++++++++++++++++++++++++++++++++++++++
             Artist(s): ${response.data[i].lineup} 
             Venue Name: ${response.data[i].venue.name}    
             Venue Location: ${response.data[i].venue.city} ${response.data[i].venue.region}
-            Event Date: ${response.data[i].datetime}
+            Event Date: ${dateVar.format("MMM Do YYYY")}
             ++++++++++++++++++++++++++++++++++++++++++++++++++
             `);
         };
