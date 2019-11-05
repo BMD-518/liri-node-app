@@ -63,13 +63,14 @@ Use Node JS to create a LIRI bot, like iPhone's SIRI, but takes in commands thro
      - Date of the Event (using the format "MMM/Do/YYYY")
     ```
     * If no search criteria is provided the function defaults to search for Celine Dion concerts.
-    ```
-    DEFAULT CONCERT-THIS HERE
-    ```
-
-2. **`node liri.js spotify-this-song '<song name here>'`**
+    
+    ![Results](./images/concert-this.png)
+    
+2. **`node liri.js spotify-this-song <song name here>`**
 
    * Displays the following information about the selected song in your terminal/bash window
+
+    ![Results](./images/spotify-this-song-input.png)
 
     ```
      - Artist(s)
@@ -80,9 +81,13 @@ Use Node JS to create a LIRI bot, like iPhone's SIRI, but takes in commands thro
 
      - The album containing the track
     ```
-   * If no song is provided, the program defaults to "The Sign" by Ace of Base.
+   * If no search criteria is provided the function defaults to search for "The Sign" by Ace of Base.
 
-3. **`node liri.js movie-this '<movie name here>'`**
+    ![Results](./images/spotify-this-song.png)
+
+3. **`node liri.js movie-this <movie name here>`**
+
+    ![Results](./images/movie-this-input.png)
 
    * This will output the following movie information to your terminal/bash window:
      ```
@@ -95,9 +100,13 @@ Use Node JS to create a LIRI bot, like iPhone's SIRI, but takes in commands thro
        - Plot of the movie
        - Film's cast
      ```
-   * If the user does not enter a movie selection, the program outputs data for the movie 'Mr. Nobody.'
+   * If no search criteria is provided the function defaults to search for  'Mr. Nobody.'
+
+   ![Results](./images/movie-this.png)
 
 4. **`node liri.js do-what-it-says`**
+
+    ![Results](./images/do-what-it-says.png)
 
      * Runs `spotify-this-song` for "I Want it That Way".
      
