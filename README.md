@@ -50,7 +50,7 @@ Use Node JS to create a LIRI bot, like iPhone's SIRI, but takes in commands thro
 
 1. **`node liri.js concert-this <artist name here>`**
 
-    ![Results](/images/concert-this-input.png)
+    ![Results](./images/concert-this-input.png)
 
    * Searches the Bands in Town Artist Events API for an artist and renders the following information about each event to the terminal:
     ```
