@@ -48,30 +48,37 @@ Use Node JS to create a LIRI bot, like iPhone's SIRI, but takes in commands thro
 
 **LIRI** searches **Bands in Town** for concerts, **Spotify** for songs, and **OMDB** for movies.
 
-1. **`node liri.js concert-this '<artist/band name here>'`**
+1. **`node liri.js concert-this <artist name here>`**
+
+    ![Results](images/concert-this-input.png)
 
    * Searches the Bands in Town Artist Events API for an artist and renders the following information about each event to the terminal:
     ```
-     * Concert Line-up
+     - Concert Line-up
      
-     * Name of the venue
+     - Name of the venue
 
-     * Venue location
+     - Venue location
 
-     * Date of the Event (using the format "MMM/Do/YYYY")
+     - Date of the Event (using the format "MMM/Do/YYYY")
     ```
+    * If no search criteria is provided the function defaults to search for Celine Dion concerts.
+    ```
+    DEFAULT CONCERT-THIS HERE
+    ```
+
 2. **`node liri.js spotify-this-song '<song name here>'`**
 
    * Displays the following information about the selected song in your terminal/bash window
 
     ```
-     * Artist(s)
+     - Artist(s)
 
-     * The song's title
+     - The song's title
 
-     * A link of the song from Spotify
+     - A link of the song from Spotify
 
-     * The album containing the track
+     - The album containing the track
     ```
    * If no song is provided, the program defaults to "The Sign" by Ace of Base.
 
@@ -79,14 +86,14 @@ Use Node JS to create a LIRI bot, like iPhone's SIRI, but takes in commands thro
 
    * This will output the following movie information to your terminal/bash window:
      ```
-       * Title
-       * Year movie was released
-       * IMDB Rating
-       * Rotten Tomatoes Rating
-       * Country where the movie was produced
-       * Language(s)
-       * Plot of the movie
-       * Film's cast
+       - Title
+       - Year movie was released
+       - IMDB Rating
+       - Rotten Tomatoes Rating
+       - Country where the movie was produced
+       - Language(s)
+       - Plot of the movie
+       - Film's cast
      ```
    * If the user does not enter a movie selection, the program outputs data for the movie 'Mr. Nobody.'
 
